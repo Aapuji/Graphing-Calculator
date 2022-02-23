@@ -80,6 +80,7 @@ main {
   width: 5px;
   background-color: var(--eqbar-bg-color);
   border: 2px solid yellow;
+  cursor: ew-resize;
 }
 
 #eq-graph-border:hover {
