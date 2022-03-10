@@ -1,10 +1,7 @@
 import React, { MutableRefObject, useEffect, useRef, useState, useCallback, CSSProperties } from 'react';
 import logo from './logo.svg';
 import Graph  from './graph/Graph';
-import EqSidebar from './sidebar/EqSidebar';
 import './App.css';
-import './sidebar/Resizable.tsx';
-import { Resizeable, Axis } from './sidebar/Resizable';
 import Draggable from 'react-draggable';
 import { getPositionOfLineAndCharacter } from 'typescript';
 
@@ -130,10 +127,14 @@ function App() {
         style={{ width: sidebarWidth }}
         onMouseDown={(e) => e.preventDefault()}
       >
-        <div className="app-sidebar-content" />
+        <div className="app-sidebar-content" style={{backgroundColor: 'blue'}}>
+          Hi
+        </div>
         <div className="app-sidebar-resizer" onMouseDown={startResizing} />
       </div>
-      <div className="app-frame" />
+      <div className="app-frame" >
+        Hello
+      </div>
     </div>
   );
 }
