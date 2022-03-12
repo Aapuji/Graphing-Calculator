@@ -42,8 +42,8 @@
 /* Main Page */
 
 :root {
-  --graph-bg-color: blue;
-  --eqbar-bg-color: green;
+  --graph-bg-color: white;
+  --eqbar-bg-color: white;
 
 }
 
@@ -65,13 +65,12 @@ main {
   max-width: 100%;
   flex-basis: 67vw;
   flex-grow: 1;
-  border: 2px solid purple;
 }
 
 /* Equation Sidebar */
 
 #eqbar {
-  background-color: var(--eqbar-bg-color);
+  background-color: white;
   border-top: 2px solid black;
   border-bottom: 2px solid black;
 }
@@ -150,6 +149,7 @@ main {
 
 .app-sidebar .app-sidebar-content {
   flex: 1;
+  margin-left: 2px;
 }
 
 .app-sidebar .app-sidebar-resizer {

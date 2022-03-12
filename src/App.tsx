@@ -2,8 +2,7 @@ import React, { MutableRefObject, useEffect, useRef, useState, useCallback, CSSP
 import logo from './logo.svg';
 import Graph  from './graph/Graph';
 import './App.css';
-import Draggable from 'react-draggable';
-import { getPositionOfLineAndCharacter } from 'typescript';
+import Cell from './cells/Cell';
 
 // function App(props: any){
 //   let sidebarWT = window.innerWidth / 3, sidebarHT;
@@ -127,13 +126,14 @@ function App() {
         style={{ width: sidebarWidth }}
         onMouseDown={(e) => e.preventDefault()}
       >
-        <div className="app-sidebar-content" style={{backgroundColor: 'blue'}}>
-          Hi
+        <div className="app-sidebar-content" style={{backgroundColor: 'white'}}>
+          <div id="expresison-list" style={{height: '50px', backgroundColor: 'green'}}/>
+          <Cell />
         </div>
         <div className="app-sidebar-resizer" onMouseDown={startResizing} />
       </div>
       <div className="app-frame" >
-        Hello
+        <Graph />
       </div>
     </div>
   );

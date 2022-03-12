@@ -1,1 +1,18 @@
-* {}
+.eqbar-cell {
+    display: flex;
+    flex-direction: row;
+    height: 60px;
+    background-color: yellow; 
+}
+
+.cell-drag-icon {
+    width: 50px;
+    height: inherit;
+    float: left;
+    background-color: aqua;
+}
+
+.cell-content {
+    flex-grow: 1;
+    /* TODO center text vertically */
+}
