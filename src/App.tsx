@@ -3,6 +3,7 @@ import logo from './logo.svg';
 import Graph  from './graph/Graph';
 import './App.css';
 import Cell from './cells/Cell';
+import FadeCell from './cells/FadeCell';
 
 // function App(props: any){
 //   let sidebarWT = window.innerWidth / 3, sidebarHT;
@@ -83,7 +84,6 @@ import Cell from './cells/Cell';
 //   </>;
 // }
 
-
 function App() {
   const sidebarRef = useRef() as MutableRefObject<HTMLDivElement>;
   const [isResizing, setIsResizing] = useState(false);
@@ -127,8 +127,9 @@ function App() {
         onMouseDown={(e) => e.preventDefault()}
       >
         <div className="app-sidebar-content" style={{backgroundColor: 'white'}}>
-          <div id="expresison-list" style={{height: '50px', backgroundColor: 'green'}}/>
+          <div id="expression-list-header" style={{height: '50px', backgroundColor: 'green'}}/>
           <Cell />
+          <FadeCell />
         </div>
         <div className="app-sidebar-resizer" onMouseDown={startResizing} />
       </div>
