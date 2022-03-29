@@ -25,6 +25,8 @@
     margin-top: auto;
     margin-left: 15px;
     margin-bottom: auto;
+    width: 100%;
+    max-width: 100%;
 }
 
 .cell-text.expression {
@@ -48,4 +50,12 @@
         rgba(255,255,255, 1) 90%);
     width: 100%;
     height: 4em;
-  }
+}
+
+[contentEditable="true"] {
+    border: 1px solid blue;
+}
+
+[contentEditable="true"]:focus {
+    outline: none;
+}
