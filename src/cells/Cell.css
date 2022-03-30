@@ -54,8 +54,19 @@
 
 [contentEditable="true"] {
     border: 1px solid blue;
+    /* white-space: nowrap; */
+    text-overflow: clip;
+    overflow: hidden;
 }
 
 [contentEditable="true"]:focus {
     outline: none;
+}
+
+.cell-content {
+    border: 1px solid blue;
+    white-space: nowrap;
+    text-overflow: clip;
+    overflow: hidden;
+    position: sticky;
 }

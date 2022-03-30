@@ -6,19 +6,20 @@ import Cell from './cells/Cell';
 import FadeCell from './cells/FadeCell';
 
 function App() {
+  // RESIZING SIDEBAR
   const sidebarRef = useRef() as MutableRefObject<HTMLDivElement>;
   const [isResizing, setIsResizing] = useState(false);
   const [sidebarWidth, setSidebarWidth] = useState(400);
 
-  const startResizing = React.useCallback((mouseDownEvent) => {
+  const startResizing = useCallback((mouseDownEvent) => {
     setIsResizing(true);
   }, []);
 
-  const stopResizing = React.useCallback(() => {
+  const stopResizing = useCallback(() => {
     setIsResizing(false);
   }, []);
 
-  const resize = React.useCallback(
+  const resize = useCallback(
     (mouseMoveEvent) => {
       if (isResizing) {
         setSidebarWidth(
@@ -45,7 +46,7 @@ function App() {
         ref={sidebarRef}
         className="app-sidebar"
         style={{ width: sidebarWidth }}
-        // onMouseDown={(e) => e.preventDefault()}
+        // onMouseDown={(e) => {e.preventDefault()}}
       >
         <div className="app-sidebar-content" style={{backgroundColor: 'white'}}>
           <div id="expression-list-header" style={{height: '50px', backgroundColor: 'green'}}/>
@@ -53,7 +54,7 @@ function App() {
           <Cell />
           <FadeCell />
         </div>
-        <div className="app-sidebar-resizer" onMouseDown={startResizing} />
+        <div className="app-sidebar-resizer" onMouseDown={startResizing}/>
       </div>
       <div className="app-frame" >
         <Graph />
