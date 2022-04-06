@@ -51,7 +51,7 @@ function App() {
         <div className="app-sidebar-content" style={{backgroundColor: 'white'}}>
           <div id="expression-list-header" style={{height: '50px', backgroundColor: 'green'}}/>
           <Cell />
-          <Cell />
+          <Cell style={{fontFamily: '\'SymbolaRegular\', \'Times New Roman\', serif'}}/>
           <FadeCell />
         </div>
         <div className="app-sidebar-resizer" onMouseDown={startResizing}/>

@@ -48,3 +48,6 @@ To learn React, check out the [React documentation](https://reactjs.org/).
 ## Helpful Links
 - [Updating Components Continuously](https://stackoverflow.com/questions/39426083/update-react-component-every-second)
 - [Very Helpful Resizable Sidebar](https://codesandbox.io/s/react-resizable-sidebar-kz9de?file=/src/App.css)
+
+## Perhaps use LaTeX to format expressions?
+- [LaTeX.js API](https://latex.js.org/usage.html#webcomponent)

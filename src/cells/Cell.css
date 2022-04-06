@@ -1,14 +1,17 @@
 .eqbar-cell {
     display: flex;
     flex-direction: row;
+    flex-grow: 1;
     height: 60px;
     background-color: white; 
     border-top: 1px solid rgba(206,206,206,0.8);
     border-bottom: 1px solid transparent;
+    margin-right: 0;
 }
 
 .cell-drag-icon {
     width: 50px;
+    min-width: 50px;
     height: inherit;
     float: left;
     background-color: rgba(0,0,0,0.03);;
@@ -17,20 +20,22 @@
 
 .cell-content {
     flex-grow: 1;
+    width: 90%;
 }
 
 .cell-text {
-    font-family: 'Times New Roman', 'SymbolaRegular', serif;
+    font-family: 'SymbolaRegular', 'Times New Roman', serif;
     font-size: 20px;
     margin-top: auto;
-    margin-left: 15px;
+    margin-left: 10px;
     margin-bottom: auto;
+    margin-right: 0;
+    height: 50px;
     width: 100%;
-    max-width: 100%;
 }
 
 .cell-text.expression {
-    font-style: italic;
+    font-style: none;
 }
 
 .fade-cell {
@@ -53,8 +58,8 @@
 }
 
 [contentEditable="true"] {
-    border: 1px solid blue;
     /* white-space: nowrap; */
+    border: none;
     text-overflow: clip;
     overflow: hidden;
 }
@@ -64,7 +69,6 @@
 }
 
 .cell-content {
-    border: 1px solid blue;
     white-space: nowrap;
     text-overflow: clip;
     overflow: hidden;

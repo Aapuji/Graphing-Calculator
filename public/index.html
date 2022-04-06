@@ -11,6 +11,19 @@
     />
     <link rel="apple-touch-icon" href="%PUBLIC_URL%/logo192.png" />
     <link rel="stylesheet" media="screen" href="https://fontlibrary.org//face/symbola" type="text/css"/>
+    <script type="module">
+      import { LaTeXJSComponent } from "https://cdn.jsdelivr.net/npm/latex.js/dist/latex.mjs"
+      customElements.define("latex-js", LaTeXJSComponent)
+    </script>
+    <style>
+      latex-js {
+        display: inline-block;
+        width: 40%;
+        border: 1px solid red;
+        margin-right: 2em;
+        font-weight: bold;
+      }
+    </style>
     <!--
       manifest.json provides metadata used when your web app is installed on a
       user's mobile device or desktop. See https://developers.google.com/web/fundamentals/web-app-manifest/
@@ -30,6 +43,11 @@
   <body>
     <noscript>You need to enable JavaScript to run this app.</noscript>
     <div id="root"></div>
+    <latex-js hyphenate="false">
+      $$
+      f(x)=x^2-2x+1
+      $$
+    </latex-js>
     <!--
       This HTML file is a template.
       If you open it directly in the browser, you will see an empty page.
