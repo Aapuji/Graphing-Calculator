@@ -17,10 +17,9 @@ function Cell(props: any): JSX.Element {
                     let target = e.currentTarget;
                     input = target.value![0] == ' ' ? target.value! : ' ' + target.value!;
                     target.value = input;
-                    console.log(target.value);
                     newChar = input.slice(-1);
-                    console.log('Text inside div ', e.currentTarget);
-                    // checkSize();
+                    console.log('Text inside div ', input);
+                    // TODO Send input to TS file to parse with all other cell inputs
                 }}
                 suppressContentEditableWarning={true} /* Stops the warnings */
             />
