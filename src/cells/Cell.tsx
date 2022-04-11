@@ -1,9 +1,10 @@
 import React from 'react';
 import './Cell.css';
+import { cellExpressions } from '../expression';
 
 function Cell(props: any): JSX.Element {
-
-    let input: string = 'Hi';
+    
+    let input: string;
     let newChar: string;
 
     return <div className="eqbar-cell" {...props}>
@@ -14,12 +15,28 @@ function Cell(props: any): JSX.Element {
                 defaultValue={' Hello'}
                 contentEditable='true'
                 onInput={e => {
-                    let target = e.currentTarget;
+                    // Get Input
+                    const target = e.currentTarget!;
+                    const parent = target.parentElement!;
+                    const cell = parent.parentElement!;
                     input = target.value![0] == ' ' ? target.value! : ' ' + target.value!;
-                    target.value = input;
+
                     newChar = input.slice(-1);
                     console.log('Text inside div ', input);
-                    // TODO Send input to TS file to parse with all other cell inputs
+                    
+                    // Set Output
+                    target.value = input;   
+                    
+                    // Send input to expression.ts
+                    if (cellExpressions[Number(cell.id)]) {
+                        cellExpressions[Number(cell.id)].expr = input;
+                    } else {
+                        cellExpressions.push({
+                            cn: Number(cell.id),
+                            expr: input
+                        });
+                    }
+                    console.log(cellExpressions, cell);
                 }}
                 suppressContentEditableWarning={true} /* Stops the warnings */
             />

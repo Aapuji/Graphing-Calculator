@@ -62,6 +62,7 @@
     border: none;
     text-overflow: clip;
     overflow: hidden;
+    border: 1px solid blue;
 }
 
 [contentEditable="true"]:focus {

@@ -4,6 +4,7 @@ import Graph  from './graph/Graph';
 import './App.css';
 import Cell from './cells/Cell';
 import FadeCell from './cells/FadeCell';
+import { cellExpressions } from './expression';
 
 function App() {
   // RESIZING SIDEBAR
@@ -40,6 +41,16 @@ function App() {
     };
   }, [resize, stopResizing]);
 
+  // Set ids of Cells
+
+  const cellRef = useRef() as MutableRefObject<HTMLDivElement>;
+  React.useEffect(() => { 
+    const cells = cellRef.current.childNodes;
+    for (let i = 1; i < cells.length - 1; i++) {
+      (cells[i] as HTMLElement).id = String(i - 1);
+    }
+  }, []);
+
   return (
     <div className="app-container">
       <div
@@ -48,7 +59,7 @@ function App() {
         style={{ width: sidebarWidth }}
         // onMouseDown={(e) => {e.preventDefault()}}
       >
-        <div className="app-sidebar-content" style={{backgroundColor: 'white'}}>
+        <div className="app-sidebar-content" style={{backgroundColor: 'white'}} ref={cellRef}>
           <div id="expression-list-header" style={{height: '50px', backgroundColor: 'green'}}/>
           <Cell />
           <Cell style={{fontFamily: '\'SymbolaRegular\', \'Times New Roman\', serif'}}/>
