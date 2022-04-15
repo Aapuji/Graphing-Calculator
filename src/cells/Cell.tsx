@@ -1,6 +1,6 @@
 import React from 'react';
 import './Cell.css';
-import { cellExpressions } from '../expression';
+import { cellExpressions, calculate, mathScope } from '../expression';
 
 function Cell(props: any): JSX.Element {
     
@@ -28,15 +28,18 @@ function Cell(props: any): JSX.Element {
                     target.value = input;   
                     
                     // Send input to expression.ts
-                    if (cellExpressions[Number(cell.id)]) {
-                        cellExpressions[Number(cell.id)].expr = input;
+                    const id = Number(cell.id);
+                    if (cellExpressions[id]) {
+                        cellExpressions[id].expr = input;
                     } else {
                         cellExpressions.push({
-                            cn: Number(cell.id),
-                            expr: input
+                            cn: id,
+                            expr: input.slice(1)
                         });
                     }
                     console.log(cellExpressions, cell);
+                    console.log(calculate(cellExpressions[id].expr));
+                    console.table(mathScope);
                 }}
                 suppressContentEditableWarning={true} /* Stops the warnings */
             />
