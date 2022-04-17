@@ -35,7 +35,7 @@ export function preparse(expr: string) {
     for (let scopedVar in tempScope) {
         for (let reservedSymbols in globalOptions.options.reservedSymbols) {
             if (scopedVar === reservedSymbols) {
-                output[scopedVar] = 1
+                output[scopedVar] = tempScope[scopedVar];
             }
         }
     }

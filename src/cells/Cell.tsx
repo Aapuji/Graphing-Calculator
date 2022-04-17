@@ -43,6 +43,7 @@ function Cell(props: any): JSX.Element {
                 }}
                 suppressContentEditableWarning={true} /* Stops the warnings */
             />
+            Hi
         </div>
     </div>;
 }
