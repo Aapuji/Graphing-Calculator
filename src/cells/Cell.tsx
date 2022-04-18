@@ -43,7 +43,9 @@ function Cell(props: any): JSX.Element {
                 }}
                 suppressContentEditableWarning={true} /* Stops the warnings */
             />
-            Hi
+            <div className="expression-output">
+                Hello
+            </div>
         </div>
     </div>;
 }
