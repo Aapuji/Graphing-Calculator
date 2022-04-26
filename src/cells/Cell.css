@@ -28,7 +28,7 @@
 }
 
 .cell-text {
-    font-family: 'SymbolaRegular', 'Times New Roman', serif;
+    font-family: 'Times New Roman', 'SymbolaRegular', 'Times New Roman', serif;
     font-size: 20px;
     margin-top: 3px /* Auto seems to be 3px */;
     margin-left: 10px;
@@ -36,7 +36,9 @@
     margin-right: 0;
     height: 40px;
     min-height: 40px;
-    width: 96%;
+    width: 327.36px; /* 96% */
+    white-space: nowrap;
+    overflow: hidden !important;
 }
 
 .expression-output {
@@ -44,7 +46,7 @@
 }
 
 .cell-text.expression {
-    font-style: none;
+    font-style: italic;
 }
 
 .fade-cell {
@@ -67,7 +69,8 @@
 }
 
 [contentEditable="true"] {
-    /* white-space: nowrap; */
+    white-space: nowrap;
+    overflow: hidden;
     border: none;
     text-overflow: clip;
     overflow: hidden;
@@ -82,5 +85,7 @@
     white-space: nowrap;
     text-overflow: clip;
     overflow: hidden;
-    position: sticky;
+    /* position: sticky; */
 }
+
+/* TEST */

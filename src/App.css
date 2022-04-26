@@ -95,7 +95,7 @@ main {
   background-color: #f0f0ff;
 }
 
-.resizable div {
+/* .resizable div {
   height: 100%;
 }
 
@@ -108,9 +108,10 @@ main {
   height: 99%;
   resize: horizontal;
   cursor: ew-resize;
-}
+} */
 
-/*  hlhglyut y*/
+/* Sidebar (hlhglyut y) */
+
 .app-container {
   min-height: 100%;
   padding: 1em 1em;
@@ -159,6 +160,7 @@ main {
   justify-self: flex-end;
   cursor: ew-resize;
   resize: horizontal;
+  /* Has width of 6px */
 }
 
 /* .app-sidebar .app-sidebar-resizer:hover {

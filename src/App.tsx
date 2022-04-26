@@ -12,6 +12,8 @@ function App() {
   const [isResizing, setIsResizing] = useState(false);
   const [sidebarWidth, setSidebarWidth] = useState(400);
 
+  const sidebarResizerWidth = 6;
+  
   const startResizing = useCallback((mouseDownEvent) => {
     setIsResizing(true);
   }, []);
@@ -61,8 +63,9 @@ function App() {
       >
         <div className="app-sidebar-content" style={{backgroundColor: 'white'}} ref={cellRef}>
           <div id="expression-list-header" style={{height: '50px', backgroundColor: 'green'}}/>
-          <Cell />
-          <Cell style={{fontFamily: '\'SymbolaRegular\', \'Times New Roman\', serif'}}/>
+          <Cell resizing={isResizing}/>
+          {/* <Cell style={{fontFamily: '\'SymbolaRegular\', \'Times New Roman\', serif'}}/> */}
+
           <FadeCell />
         </div>
         <div className="app-sidebar-resizer" onMouseDown={startResizing}/>

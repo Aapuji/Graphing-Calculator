@@ -1,4 +1,4 @@
-import { create, all, evaluateDependencies } from 'mathjs'
+import { create, all, evaluateDependencies } from 'mathjs';
 
 const config = { };
 const math = create(all, config);
