@@ -81,8 +81,10 @@ function Cell(props: any): JSX.Element {
         console.log('Text inside div ', input);
         
         // Set Output
-        target.innerText = output;   
+        // target.innerText = output;   
 
+        
+        
         // Send input to expression.ts
         const id = Number(cell.id);
         if (cellExpressions[id]) {
@@ -108,10 +110,12 @@ function Cell(props: any): JSX.Element {
                 contentEditable="true"
                 onInput={onInput}
                 suppressContentEditableWarning={true} /* Stops the warnings */
-            />
-            <div className="expression-output">
-                Hello
+            >
+                {'\\(f(x) = x^2-1 \\over x\\)'}
             </div>
+            {/* <div className="expression-output">
+                Hello
+            </div> */}
         </div>
     </div>;
 }
