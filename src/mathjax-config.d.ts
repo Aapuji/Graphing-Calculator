@@ -1,5 +1,3 @@
-import { HTMLAttributeAnchorTarget } from "react";
-
 declare module NodeJS {
     interface Global {
             MathJax: object

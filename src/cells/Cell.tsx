@@ -116,9 +116,10 @@ function Cell(props: any): JSX.Element {
          * 0. Set constants for the size of the svgs to be equal to textsize, and a function to determine svg size depending on text height
          * 1. Get plain text input from div, store it
          * 2. Parse it into an array of objects which hold information about each character
-         *      eg. pos (position in str), char (actual character), scriptPos (number representing position in "scripts," eg. 0 = normal, -1 = subscript, 1, = superscript), leadingScriptPos (scriptPos of next char or null), etc.
+         *      eg. pos (position in str), char (actual character), scriptPos (number representing position in "scripts," eg. 0 = normal, -1 = subscript, 1, = superscript), and next which points to the next object in that cell or null.
          * 3. Loop through that array and convert to LaTeX the ones that need latex, and insert <var>{char}</var> or its svg using the API call.
          *      Remember, multiple subscripts or superscripts can be done by doing `2_{2_{2}}` or `2^{2^{2}}`
+         * 4. 
          * 
         */
     }
