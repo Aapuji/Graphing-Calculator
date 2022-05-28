@@ -1,9 +1,12 @@
 import React, { MutableRefObject, useCallback, useEffect, useRef, useState } from 'react';
 import './Cell.css';
 import { cellExpressions, calculate, mathScope } from '../expression';
+import MathQuill, { MathField } from 'mathquill-node';
+import math from 'mathjs';
 
 // @ts-ignore
 const MathJax = globalThis.MathJax;
+const MQ = MathQuill.getInterface(2);
 
 // function getCaretSelection(element: HTMLDivElement) {
 //     let start = 0;
@@ -38,6 +41,7 @@ const MathJax = globalThis.MathJax;
 function Cell(props: any): JSX.Element {
 
     const textref = useRef() as MutableRefObject<HTMLDivElement>;
+    let mathField: MathField;
 
     // const reportSelection = useCallback(
     //     (): {start: number, end: number} => {
@@ -59,8 +63,17 @@ function Cell(props: any): JSX.Element {
     //     document.addEventListener('keyup', reportSelection);
     // }, []);
 
-    // Set Default Text
+    // Set Default Values
     useEffect(() => {
+        mathField = MQ.MathField(textref.current, {
+            restrictMismatchedBrackets: true,
+            handlers: {
+                edit: function() {
+                  let enteredMath = mathField.latex(); // Get entered math in LaTeX format
+                }
+            }
+        });
+        mathField.latex("\\frac{1}{2}");
     }, []);
 
     const [eqBarWidth, setEQBarWidth] = useState(392); // The sidebar resizer has a width of 6px
@@ -101,47 +114,50 @@ function Cell(props: any): JSX.Element {
         console.log(cellExpressions, cell);
         console.log(calculate(cellExpressions[id].expr));
         console.table(mathScope);
-
-        /** 
-         * Plan for getting equations, axis variables (x, y, r, theta), latex img/representation, and ability to traverse single characters by moving the cursor
-         * 
-         * Perhaps, store svgs when the values aren't so easy. So for normal x = 1, `x` and `1` can be normal italic numbers, while for subscripts and superscripts, it can use svgs, and store some of the more common ones (eg. parentheses, exponent of 2, 3, /, +, -, *, =)
-         * 
-         * Use https://editor.codecogs.com/docs/ for getting the svgs
-         * Use <var></var> for the texts
-         * 
-         * =================================================================== 
-         *                              ALGORITHM                              
-         * =================================================================== 
-         * 0. Set constants for the size of the svgs to be equal to textsize, and a function to determine svg size depending on text height
-         * 1. Get plain text input from div, store it
-         * 2. Parse it into an array of objects which hold information about each character
-         *      eg. pos (position in str), char (actual character), scriptPos (number representing position in "scripts," eg. 0 = normal, -1 = subscript, 1, = superscript), and next which points to the next object in that cell or null.
-         * 3. Loop through that array and convert to LaTeX the ones that need latex, and insert <var>{char}</var> or its svg using the API call.
-         *      Remember, multiple subscripts or superscripts can be done by doing `2_{2_{2}}` or `2^{2^{2}}`
-         * 4. 
-         * 
-        */
     }
 
     return <div className="eqbar-cell" {...props}>
         <div className="cell-drag-icon"></div>
         <div className="cell-content flex-container">   
-            <div
-                className="cell-text expression"
+            <span 
+                className="cell-text expression" 
                 ref={textref}
-                defaultValue={" Hello"}
-                contentEditable="true"
-                onInput={onInput}
-                suppressContentEditableWarning={true} /* Stops the warnings */
-            >
-                {'\\(f(x) = x^2-1 \\over x\\)'}
-            </div>
-            {/* <div className="expression-output">
-                Hello
-            </div> */}
+            ></span>
         </div>
     </div>;
 }
 
+/*
+<span
+                className="cell-text expression"
+                ref={textref}
+                // defaultValue={" Hello"}
+                // contentEditable={false}
+                // onInput={onInput}
+                // suppressContentEditableWarning={true} /* Stops the warnings
+                >
+                </span>
+*/
+
 export default Cell;
+
+/** 
+ * Plan for getting equations, axis variables (x, y, r, theta), latex img/representation, and ability to traverse single characters by moving the cursor
+ * 
+ * Perhaps, store svgs when the values aren't so easy. So for normal x = 1, `x` and `1` can be normal italic numbers, while for subscripts and superscripts, it can use svgs, and store some of the more common ones (eg. parentheses, exponent of 2, 3, /, +, -, *, =)
+ * 
+ * Use https://editor.codecogs.com/docs/ for getting the svgs
+ * Use <var></var> for the texts
+ * 
+ * =================================================================== 
+ *                              ALGORITHM                              
+ * =================================================================== 
+ * 0. Set constants for the size of the svgs to be equal to textsize, and a function to determine svg size depending on text height
+ * 1. Get plain text input from div, store it
+ * 2. Parse it into an array of objects which hold information about each character
+ *      eg. pos (position in str), char (actual character), scriptPos (number representing position in "scripts," eg. 0 = normal, -1 = subscript, 1, = superscript), and next which points to the next object in that cell or null.
+ * 3. Loop through that array and convert to LaTeX the ones that need latex, and insert <var>{char}</var> or its svg using the API call.
+ *      Remember, multiple subscripts or superscripts can be done by doing `2_{2_{2}}` or `2^{2^{2}}`
+ * 4. 
+ * 
+*/
